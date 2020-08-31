@@ -5,6 +5,7 @@ const Post = require('./models/posts');
 var cors = require('cors')
 
 app.use(cors());
+// app.use(bodyParser());
 
 app.listen(33310);
 
