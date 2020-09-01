@@ -14,7 +14,8 @@ const postsSchema = new mongoose.Schema({
         required: true
     },
     alias: {
-        type: String
+        type: String, 
+        required: true
     },
     body: {
         type: String
