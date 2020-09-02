@@ -2,10 +2,6 @@ const mongoose = require('../mongoose');
 
 
 const postsSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        index: true
-    },
     userId: {
         type: Number
     },
@@ -15,13 +11,11 @@ const postsSchema = new mongoose.Schema({
     },
     alias: {
         type: String, 
-        required: true
+        required: true,
+        unique: true
     },
     body: {
         type: String
-    },
-    thumbnail: {
-        type: String,
     }
 });
 

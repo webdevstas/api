@@ -18,8 +18,8 @@ app.get('/api/posts', function(req, res){
 });
 
 //Get one
-app.get('/api/posts/:id', function(req, res){
-    Post.findOne({id: req.params.id}, function(err, result){
+app.get('/api/posts/:alias', function(req, res){
+    Post.findOne({alias: req.params.alias}, function(err, result){
         if (err) throw err
         res.json(result)
     });
@@ -29,15 +29,19 @@ app.get('/api/posts/:id', function(req, res){
 app.put('/api/posts/', function(req, res){
     const body = req.body;
     var post = new Post(body)
+    try {
     post.save(function (err) {
-        if (err) throw err
+        console.log(err)
     })
+}catch (err){
+    throw err
+}
     res.end('OK')
 })
 
 //Delete post
-app.delete('/api/posts/:id', function(req, res){
-    Post.deleteOne({id: req.params.id}, function(err){
+app.delete('/api/posts/:alias', cors({origin: 'http://localhost:3000'}), function(req, res){
+    Post.deleteOne({alias: req.params.alias}, function(err){
         if (err) throw err
     })
     res.end('OK')
